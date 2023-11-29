@@ -3,7 +3,7 @@ import './App.css';
 import { Button } from 'react-bootstrap';
 import { Entry } from './page/entry/Entry';
 import { DefaultLayout } from './layout/DefaultLayout';
-
+import { Dashboard } from './page/dashboard/Dashboard';
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <div className="App">
    {/* <Entry/> */}
    <DefaultLayout>
-   //Dashboard
+   <Dashboard/>
    </DefaultLayout>
      
       

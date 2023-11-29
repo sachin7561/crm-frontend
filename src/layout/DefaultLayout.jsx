@@ -4,7 +4,7 @@ import { Footer } from './Partials/Footer'
 
 export const DefaultLayout = ({children}) => {
   return (
-    <div className='default-layout'>
+    <div className='default-layout mb-2'>
         <header className='header'>
         <Header/>
         </header>
