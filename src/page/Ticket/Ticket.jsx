@@ -4,14 +4,27 @@ import { Container ,Row,Col,Button} from 'react-bootstrap'
 import tickets from '../../assests/data/dummy-tickets.json'
 import { MessageHistory } from '../../components/message-history/MessageHistory'
 import { UpdateTicket } from '../../components/update-ticket/UpdateTicket'
+import { useParams } from 'react-router-dom'
 
 
 export const Ticket = () => {
+    // const ticket=tickets[0]
+    const {tId} = useParams()
     const [message,setMessage]=useState('')
+    const [ticket,setTicket]=useState('')
 
     useEffect(()=>{
+        for(let i=0; i<tickets.length; i++)
+        {if(tickets[i].id==tId)
+            {
+                setTicket(tickets[i])
+                continue;
+            }
+       
+           
+        }
 
-    },[message])
+    },[message],tId)
 
     const handleOnChange=(e) => {
         setMessage(e.target.value)
@@ -21,7 +34,7 @@ export const Ticket = () => {
         alert('form submitted successfully')
     }
 
-    const ticket=tickets[0]
+    
   return (
     <div>
         
@@ -33,7 +46,8 @@ export const Ticket = () => {
                 </Col>
             </Row>
             <Row>
-                <Col className='text-weight-bolder text-secondary'>
+                <Col className='text-weight-bolder text-secondary'> 
+               
                 <div className="subject">Subject:{ticket.subject}</div>
                 <div className="date">IssueDate:{ticket.addedAT}</div>
                 <div className="status">Status:{ticket.status}</div>
@@ -48,7 +62,10 @@ export const Ticket = () => {
 
             <Row className='mt-4'>
                 <Col >
-                <MessageHistory msg={ticket.history}/>
+                {
+                    ticket.history &&<MessageHistory msg={ticket.history}/>
+                }
+
                 </Col>
             </Row>
             <Row className='mt-4'>
